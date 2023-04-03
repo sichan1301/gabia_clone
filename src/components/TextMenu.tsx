@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { products } from "../dummyData/data"
-import { textLink } from "../dummyData/dataType"
+import { textLink, textType } from "../dummyData/dataType"
 
 type TextMenuProps = {
   productIdx:number
@@ -8,24 +8,13 @@ type TextMenuProps = {
 
 const TextMenu = ({productIdx}:TextMenuProps) => {
 
-  // const textTypeBackground = (menuType:string) => {
-  //   switch(menuType){œ
-  //     case "update":
-  //       return "blue"
-  //     case "new":
-  //       return "skyblue"
-  //     case "event":
-  //       return "orange"
-  //   }
-  // }
-
   return (
     <Section>
       {products[productIdx].menus.map(menus => (<MenuUl>
         <Title>{menus.title}</Title>
         {(menus.menu as textLink[]).map(menu => (<MenuItem>
           <MenuLi><a href={menu.link}>{menu.text}</a></MenuLi>
-          <TextType textType="">
+          <TextType textType={menu.type}>
             {(() => {
               switch (menu.type) {
                 case "Update":
@@ -70,15 +59,31 @@ const Title = styled.p`
 
 const MenuItem = styled.div`
   display: flex;
+  align-items:center;
+  margin-bottom:20px;
 `
 
 const MenuLi = styled.li`
-  margin: 0 5px 15px 0;
+  margin-right:15px;  
 `
 
 type TextTypeProps = {
-  textType:string
+  textType:textType | undefined
 }
+
+
 const TextType = styled.span<TextTypeProps>`
   color:#fff;
+  border-radius:20px;
+  padding:1px 5px;
+  background-color:${props => {
+    switch(props.textType) {
+      case "Update":
+        return `rgb(46, 52, 132)`;
+      case "Event":
+        return `rgb(121, 190, 243)`;
+      case "New":
+        return `orange`;
+    }
+  }}
 `

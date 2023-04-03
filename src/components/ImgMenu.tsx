@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { products } from "../dummyData/data"
-import { menuType, product } from "../dummyData/dataType"
 
 type ImgMenuProps = {
   productIdx:number
@@ -10,7 +9,7 @@ const ImgMenu = ({productIdx}:ImgMenuProps) => {
   return (
     <Section>
       {products[productIdx].menus.map(menus => <ImgMenuUl>
-        <p>{menus.title}</p> 
+        <Title>{menus.title}</Title> 
         <ImgDiv>
           <Img src = {require(`../img/${menus.menu as string}`)} />
         </ImgDiv> 
@@ -25,6 +24,11 @@ const Section = styled.section`
   width:60%;
   display: flex;
   justify-content: space-around;
+`
+
+const Title = styled.p`
+  font-size: 20px;
+  color:grey;
 `
 
 const ImgMenuUl = styled.ul`
