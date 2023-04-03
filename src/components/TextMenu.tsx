@@ -8,13 +8,24 @@ type TextMenuProps = {
 
 const TextMenu = ({productIdx}:TextMenuProps) => {
 
+  const textTypeBackground = (menuType:string) => {
+    switch(menuType){
+      case "update":
+        return "blue"
+      case "new":
+        return "skyblue"
+      case "event":
+        return "orange"
+    }
+  }
+
   return (
     <Section>
       {products[productIdx].menus.map(menus => (<MenuUl>
         <Title>{menus.title}</Title>
         {(menus.menu as textLink[]).map(menu => (<MenuItem>
           <MenuLi><a href={menu.link}>{menu.text}</a></MenuLi>
-          <MenuSpan menuType="">
+          <TextType textType={textTypeBackground}>
             {(() => {
               switch (menu.type) {
                 case "Update":
@@ -27,7 +38,7 @@ const TextMenu = ({productIdx}:TextMenuProps) => {
                   return null;
               }
             })()}
-          </MenuSpan>
+          </TextType>
         </MenuItem>
           )
         )}
@@ -65,9 +76,9 @@ const MenuLi = styled.li`
   margin: 0 5px 15px 0;
 `
 
-type MenuSpanProps = {
-  menuType:string
+type TextTypeProps = {
+  textType(value:string):string
 }
-const MenuSpan = styled.span<MenuSpanProps>`
-  
+const TextType = styled.span<TextTypeProps>`
+  color:#fff;
 `
