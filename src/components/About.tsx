@@ -9,8 +9,8 @@ const About = ({productIdx}:AboutPropsType) => {
     <AboutArticle>
       <Title>{products[productIdx].title}</Title>
       <Explain>{products[productIdx].explain}</Explain>
-      <a href={products[productIdx].serviceLink}><Service serviceType="Service">서비스 알아보기</Service></a>
-      {products[productIdx].marketPlaceLink && <a href = {products[productIdx].marketPlaceLink}><Service serviceType="marketPlace">마켓 플레이스</Service></a>}
+      <a href={products[productIdx].serviceLink}><Service>서비스 알아보기</Service></a>
+      {products[productIdx].marketPlaceLink && <a href = {products[productIdx].marketPlaceLink}><MarketService>마켓 플레이스</MarketService></a>}
     </AboutArticle>
   )
 }
@@ -35,17 +35,19 @@ const Explain = styled.p`
   color:Grey;
 `
 
-type ServiceProps = {
-  serviceType:string
-}
-
-const Service = styled.button<ServiceProps>`
-  background-color:${props => props.serviceType ==="marketPlace" ? `#fff`:`#59a9c9`}; 
-  color:${props => props.serviceType === "marketPlace" ? `black`:`#fff`}; 
-  border:${props => props.serviceType === "marketPlace" ? `1px solid black`:`none`}; 
+const Service = styled.button`
+  background-color:#59a9c9; 
+  color:#fff; 
+  border:none; 
   border-radius: 5px;
   cursor:pointer;
   width:100%;
   height:40px;
   margin-bottom:10px;
+`
+
+const MarketService = styled(Service)`
+  background-color: #fff;
+  color:black;
+  border:1px solid black
 `

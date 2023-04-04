@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { products } from "../dummyData/data"
-import { imgLink } from "../dummyData/dataType"
+import { imgLink, subMenuImageType, subMenuType } from "../dummyData/dataType"
 
 type ImgMenuProps = {
   productIdx:number
@@ -9,12 +9,17 @@ type ImgMenuProps = {
 const ImgMenu = ({productIdx}:ImgMenuProps) => {
   return (
     <Section>
-      {products[productIdx].menus.map(menus => <ImgMenuUl>
-        <Title>{menus.title}</Title> 
+      {products[productIdx].menus.map((menus : subMenuType) => {
+        const title = menus.title;
+        const menu = menus as subMenuImageType;
+        return <ImgMenuDiv>
+        <Title>{title}</Title> 
         <ImgDiv>
-          <a href={(menus.menu as imgLink).link}><Img src = {require(`../img/${(menus.menu as imgLink).imgSrc}`)} /></a>
+          <a href={menu.menu[0].link}><Img src = {require(`../img/${menu.menu[0].imgSrc}`)} /></a>
         </ImgDiv> 
-      </ImgMenuUl>)}
+      </ImgMenuDiv>
+      }
+      )}
     </Section>
   )
 }
@@ -32,7 +37,7 @@ const Title = styled.p`
   color:grey;
 `
 
-const ImgMenuUl = styled.ul`
+const ImgMenuDiv = styled.div`
   display:flex;
   flex-direction: column;
 `

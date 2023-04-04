@@ -4,14 +4,23 @@ export type product = {
   serviceLink?:string,
   marketPlaceLink?:string,
   explain:string,
-  menus:{
-    title:string,
-    menu:menuType
-  }[]
+  menus:subMenuType[]
 }
 
 export type productType = "TextMenu" | "ImgMenu"
 export type menuType = textLink[] | imgLink
+
+export type subMenuType = subMenuTextType | subMenuImageType;
+
+export type subMenuTextType = {
+  title: string,
+  menu: textLink[],
+}
+
+export type subMenuImageType = {
+  title: string,
+  menu: imgLink[],
+}
 
 export type textLink = {
   type?:textType,

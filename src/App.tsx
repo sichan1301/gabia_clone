@@ -19,28 +19,15 @@ function App() {
         {products.map((product,productIdx:number) => <ProductLi onMouseEnter={() => handleMouseEnter(productIdx)}><a href={product.serviceLink}>{product.title}</a></ProductLi>)}
       </ProductNav>
       
-
       <Container>
         <About productIdx = {productIdx}/> 
-      
-        {(() => {
-              switch (products[productIdx].type) {
-                case "TextMenu":
-                  return <TextMenu productIdx = {productIdx}/>;
-                case "ImgMenu":
-                  return <ImgMenu productIdx = {productIdx}/>;
-                default:
-                  return null;
-              }
-            })()}
-
+        {products[productIdx].type==="TextMenu"?<TextMenu productIdx = {productIdx}/>:<ImgMenu productIdx = {productIdx}/>}
       </Container>
     </>
   );
 }
 
 export default App;
-
 
 const ProductNav = styled.nav`
   display: flex;

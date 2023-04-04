@@ -10,25 +10,14 @@ const TextMenu = ({productIdx}:TextMenuProps) => {
 
   return (
     <Section>
-      {products[productIdx].menus.map(menus => (<MenuUl>
+      {products[productIdx].menus.map(menus => (
+      <MenuUl>
         <Title>{menus.title}</Title>
-        {(menus.menu as textLink[]).map(menu => (<MenuItem>
-          <MenuLi><a href={menu.link}>{menu.text}</a></MenuLi>
-          <TextType textType={menu.type}>
-            {(() => {
-              switch (menu.type) {
-                case "Update":
-                  return "update";
-                case "New":
-                  return "new";
-                case "Event":
-                  return "event";
-                default:
-                  return null;
-              }
-            })()}
-          </TextType>
-        </MenuItem>
+        {(menus.menu as textLink[]).map(menu => (
+          <MenuDiv>
+            <MenuLi><a href={menu.link}>{menu.text}</a></MenuLi>
+            <TextType textType={menu.type}>{menu.type && menu.type}</TextType>
+          </MenuDiv>
           )
         )}
       </MenuUl>
@@ -52,19 +41,19 @@ const MenuUl = styled.ul`
   flex-direction: column;
 `
 
+const MenuLi = styled.li`
+  margin-right:15px;  
+`
+
 const Title = styled.p`
   font-size: 20px;
   color:grey;
 `
 
-const MenuItem = styled.div`
+const MenuDiv = styled.div`
   display: flex;
   align-items:center;
   margin-bottom:20px;
-`
-
-const MenuLi = styled.li`
-  margin-right:15px;  
 `
 
 type TextTypeProps = {
