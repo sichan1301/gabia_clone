@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { products } from "../dummyData/data"
+import { imgLink } from "../dummyData/dataType"
 
 type ImgMenuProps = {
   productIdx:number
@@ -11,7 +12,7 @@ const ImgMenu = ({productIdx}:ImgMenuProps) => {
       {products[productIdx].menus.map(menus => <ImgMenuUl>
         <Title>{menus.title}</Title> 
         <ImgDiv>
-          <Img src = {require(`../img/${menus.menu as string}`)} />
+          <a href={(menus.menu as imgLink).link}><Img src = {require(`../img/${(menus.menu as imgLink).imgSrc}`)} /></a>
         </ImgDiv> 
       </ImgMenuUl>)}
     </Section>

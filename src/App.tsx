@@ -21,7 +21,8 @@ function App() {
       
 
       <Container>
-        <About productIdx = {productIdx}/>
+        <About productIdx = {productIdx}/> 
+      
         {(() => {
               switch (products[productIdx].type) {
                 case "TextMenu":

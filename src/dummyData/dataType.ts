@@ -11,11 +11,16 @@ export type product = {
 }
 
 export type productType = "TextMenu" | "ImgMenu"
-export type menuType = textLink[] | string
+export type menuType = textLink[] | imgLink
 
 export type textLink = {
-  type?:textType
+  type?:textType,
   text:string,
+  link:string
+}
+
+export type imgLink = {
+  imgSrc:string,
   link:string
 }
 

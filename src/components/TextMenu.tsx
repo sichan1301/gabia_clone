@@ -71,7 +71,6 @@ type TextTypeProps = {
   textType:textType | undefined
 }
 
-
 const TextType = styled.span<TextTypeProps>`
   color:#fff;
   border-radius:20px;

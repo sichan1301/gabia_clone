@@ -245,11 +245,17 @@ export const products:product[] = [
     menus:[
       {
         title:"AWS",
-        menu:"FirstImg.jpg"
+        menu:{
+          imgSrc:"FirstImg.jpg",
+          link:"www.~.com"
+        }
       },
       {
         title:"Azure",
-        menu:"SecondImg.jpg"
+        menu:{
+          imgSrc:"SecondImg.jpg",
+          link:"www.~.com"
+        }
       }
     ]
   },
